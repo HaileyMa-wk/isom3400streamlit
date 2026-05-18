@@ -41,4 +41,17 @@ st.bar_chart(df[['Product', 'Sales']].set_index('Product'))
 st.markdown("### Customer Engagement by Product")
 st.scatter_chart(df[['Product', 'Customers']].set_index('Product'))
 
-# Step 6: Run the Streamlit App (run in terminal: streamlit run app.py)
+#data element
+# Sample data
+data = {'Product': ['A', 'B', 'C'], 
+        'Sales': [1200, 850, 950], 
+        'Customers': [300, 400, 350]}
+df = pd.DataFrame(data)
+
+# Show data with Streamlit elements
+st.dataframe(df)                # Interactive table
+st.data_editor(df)              # Editable table
+st.table(df)                    # Static table
+
+# Customize columns directly in the dataframe display
+st.dataframe(df.style.format({'Sales': '${:,.0f}', 'Customers': '{:,.0f}'}))
